@@ -16,6 +16,11 @@ public class CategoryRestController {
     }
 
 
+    @RequestMapping(path = "/category/get", method = RequestMethod.GET)
+    public ResponseEntity<?> getMessages(@RequestParam int categoryId){
+        return new ResponseEntity<>(categoryService.findById(categoryId), HttpStatus.OK);
+    }
+
     @RequestMapping(path = "/category/save", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<String> saveMessage(@RequestBody Category category){
         categoryService.save(category);
@@ -29,13 +34,9 @@ public class CategoryRestController {
     }
 
     @RequestMapping(path = "/category/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteMessage(@RequestParam Long categoryId){
+    public ResponseEntity<String> deleteMessage(@RequestParam int categoryId){
         categoryService.delete(categoryId);
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/category/get", method = RequestMethod.GET)
-    public ResponseEntity<?> getMessages(@RequestParam Long categoryId){
-        return new ResponseEntity<>(categoryService.findById(categoryId), HttpStatus.OK);
-    }
 }

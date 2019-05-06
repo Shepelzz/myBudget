@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Log4j
 @Service
@@ -36,13 +37,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) throws InternalServerError {
+    public void delete(int id) throws InternalServerError {
         userDAO.delete(id);
     }
 
     @Override
-    public User findById(Long id) throws InternalServerError, NotFoundException {
+    public User findById(int id) throws InternalServerError, NotFoundException {
         return userDAO.findById(id);
+    }
+
+    @Override
+    public List<User> getAll() throws InternalServerError {
+        return userDAO.getAll();
     }
 
     @Override

@@ -10,6 +10,8 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Log4j
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -31,12 +33,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(Long id) throws InternalServerError {
+    public void delete(int id) throws InternalServerError {
         categoryDAO.delete(id);
     }
 
     @Override
-    public Category findById(Long id) throws InternalServerError, NotFoundException {
+    public Category findById(int id) throws InternalServerError, NotFoundException {
         return categoryDAO.findById(id);
+    }
+
+    @Override
+    public List<Category> getAll() throws InternalServerError {
+        return categoryDAO.getAll();
     }
 }

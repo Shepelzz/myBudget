@@ -11,9 +11,12 @@ import java.util.List;
 @Log4j
 @Repository
 public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO {
-
     private static final String SQL_GET_USER_BY_EMAIL = "SELECT u FROM User u WHERE email = :email";
     private static final String SQL_GET_USER_BY_AUTH = "SELECT u FROM User u WHERE email = :email AND password = :password";
+
+    public UserDAOImpl() {
+        setClazz(User.class);
+    }
 
     @Override
     public User getUserByEmail(String email) throws InternalServerError {

@@ -20,24 +20,24 @@ public class CategoryTypeRestController {
 
     @RequestMapping(path = "/category-type/save", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<String> saveMessage(@RequestBody CategoryType categoryType){
-        categoryTypeService.save(categoryType);
+//        categoryTypeService.save(categoryType);
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @RequestMapping(path = "/category-type/update", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
     public ResponseEntity<String> editMessage(@RequestBody CategoryType categoryType){
-        categoryTypeService.update(categoryType);
+//        categoryTypeService.update(categoryType);
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @RequestMapping(path = "/category-type/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteMessage(@RequestParam Long categoryTypeId){
+    public ResponseEntity<String> deleteMessage(@RequestParam int categoryTypeId){
         categoryTypeService.delete(categoryTypeId);
         return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @RequestMapping(path = "/category-type/get", method = RequestMethod.GET)
-    public ResponseEntity<?> getMessages(@RequestParam Long categoryTypeId){
+    public ResponseEntity<?> getMessages(@RequestParam int categoryTypeId){
         return new ResponseEntity<>(categoryTypeService.findById(categoryTypeId), HttpStatus.OK);
     }
 

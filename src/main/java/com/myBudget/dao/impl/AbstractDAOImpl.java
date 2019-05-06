@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j
 @Repository
@@ -56,7 +58,7 @@ public abstract class AbstractDAOImpl<T extends AbstractEntity> implements Abstr
 
     @Override
     @Transactional
-    public void delete(Long id) throws InternalServerError{
+    public void delete(int id) throws InternalServerError{
         int res;
         try {
             res = entityManager.createQuery(SQL_DELETE_BY_ID).setParameter("id", id).executeUpdate();
@@ -73,7 +75,7 @@ public abstract class AbstractDAOImpl<T extends AbstractEntity> implements Abstr
 
 
     @Override
-    public T findById(Long id) throws InternalServerError{
+    public T findById(int id) throws InternalServerError{
         T t = null;
         try {
             t = entityManager.find(clazz, id);
@@ -86,5 +88,17 @@ public abstract class AbstractDAOImpl<T extends AbstractEntity> implements Abstr
             throw new NotFoundException("Entity "+clazz.getSimpleName()+" with id " + id + " was not found");
         }
         return t;
+    }
+
+    @Override
+    public List<T> getAll() throws InternalServerError {
+        List<T> result = new ArrayList<>();
+        try{
+            result = entityManager.createQuery("Select t from " + clazz.getSimpleName() + " t").getResultList();
+        } catch (Exception e){
+            log.error(e.getMessage(), e);
+            throw new InternalServerError(e.getMessage(), e.getCause());
+        }
+        return result;
     }
 }

@@ -8,4 +8,9 @@ import org.springframework.stereotype.Repository;
 @Log4j
 @Repository
 public class CategoryTypeDAOImpl extends AbstractDAOImpl<CategoryType> implements CategoryTypeDAO {
+
+    public CategoryTypeDAOImpl() {
+        setClazz(CategoryType.class);
+    }
+
 }

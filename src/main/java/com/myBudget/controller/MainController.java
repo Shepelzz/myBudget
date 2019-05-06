@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class MainController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model, HttpSession session){
+    public String mainPage(Model model, HttpSession session){
         String loggedUserId = (String) session.getAttribute("loggedUserId");
         if(loggedUserId != null)
             return "redirect:/home";
@@ -30,8 +30,13 @@ public class MainController {
     }
 
     @RequestMapping(path = "/home", method = RequestMethod.GET)
-    public String test(Model model, HttpSession session){
+    public String homePage(Model model, HttpSession session){
         return "home";
+    }
+
+    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    public String testPage(Model model, HttpSession session){
+        return "test";
     }
 
 }
