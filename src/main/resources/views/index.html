@@ -14,11 +14,15 @@
 <style>
     .form-signin {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
         padding: 15px;
         margin: auto;
-        background-color: #f5f5f5;
+        background-color: #ffffff;
         margin-top: 20%;
+    }
+    .shadow {
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+        padding: 10px;
     }
 
 </style>
@@ -61,14 +65,13 @@
     <!--</nav>-->
 <!--</header>-->
 
-<body class="text-center">
-
-
-
+<body class="text-center" style="background-color: whitesmoke">
 
 
 <div class="container">
-    <form id="login" class="form-signin pl-3 pr-3">
+    <form id="login" class="form-signin pl-5 pr-5 shadow">
+
+
         <img class="mb-4" src="" alt="" width="72" height="72">
         <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
         <label for="emailInput" class="sr-only">Email address</label>
@@ -84,7 +87,7 @@
         or <a class="" href="#">Register</a>
 
     </form>
-    <p class="mt-2 text-muted">© 2018-2019</p>
+    <p class="mt-3 text-muted">© 2018-2019</p>
 </div>
 
 </body>
