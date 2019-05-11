@@ -105,11 +105,15 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addResourceHandler(
                 "/img/**",
                 "/css/**",
-                "/js/**")
+                "/js/**",
+                "/scss/**",
+                "/vendor/**")
                 .addResourceLocations(
                         "classpath:/static/img/",
                         "classpath:/static/css/",
-                        "classpath:/static/js/");
+                        "classpath:/static/js/",
+                        "classpath:/static/scss/",
+                        "classpath:/static/vendor/");
     }
 
     @Bean

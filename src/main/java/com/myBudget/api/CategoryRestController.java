@@ -1,11 +1,15 @@
 package com.myBudget.api;
 
 import com.myBudget.entity.Category;
+import com.myBudget.model.CategoryForm;
 import com.myBudget.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CategoryRestController {
@@ -16,27 +20,33 @@ public class CategoryRestController {
     }
 
 
-    @RequestMapping(path = "/category/get", method = RequestMethod.GET)
-    public ResponseEntity<?> getMessages(@RequestParam int categoryId){
-        return new ResponseEntity<>(categoryService.findById(categoryId), HttpStatus.OK);
+    @RequestMapping(path = "/categories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Category> getAllCategories(){
+        return categoryService.getAll();
     }
 
-    @RequestMapping(path = "/category/save", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<String> saveMessage(@RequestBody Category category){
-        categoryService.save(category);
-        return new ResponseEntity<>( HttpStatus.OK);
+    @RequestMapping(path = "/category/{categoryId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Category getCategory(@PathVariable("categoryId") int categoryId){
+        return categoryService.findById(categoryId);
     }
 
-    @RequestMapping(path = "/category/update", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<String> editMessage(@RequestBody Category category){
-        categoryService.update(category);
-        return new ResponseEntity<>( HttpStatus.OK);
+    @RequestMapping(path = "/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Category saveCategory(@RequestBody CategoryForm categoryForm){
+        return categoryService.save(categoryForm);
     }
 
-    @RequestMapping(path = "/category/delete", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteMessage(@RequestParam int categoryId){
+    @RequestMapping(path = "/category", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Category updateCategory(@RequestBody CategoryForm categoryForm){
+        return categoryService.update(categoryForm);
+    }
+
+    @RequestMapping(path = "/category/{categoryId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void deleteCategory(@PathVariable("categoryId") int categoryId){
         categoryService.delete(categoryId);
-        return new ResponseEntity<>( HttpStatus.OK);
     }
 
 }

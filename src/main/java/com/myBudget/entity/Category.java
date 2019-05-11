@@ -1,12 +1,11 @@
 package com.myBudget.entity;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "CATEGORY")
@@ -17,6 +16,11 @@ public class Category extends AbstractEntity{
 
     @Column(name = "NAME")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name="CATEGORY_TYPE_ID")
+    private CategoryType categoryType;
+
 
     
 }

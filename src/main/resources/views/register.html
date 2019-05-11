@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin - Register</title>
+  <link href="../static/css/all.css" rel="stylesheet" th:href="@{/css/all.css}">
+
+</head>
+
+<body class="bg-dark" ng-app="myBudget" ng-controller="registerController">
+
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Register an Account</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" ng-model="registerForm.firstName">
+                  <label for="firstName">First name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" ng-model="registerForm.lastName">
+                  <label for="lastName">Last name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" ng-model="registerForm.email">
+              <label for="inputEmail">Email address</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" ng-model="registerForm.password">
+                  <label for="inputPassword">Password</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required" ng-model="registerForm.confirmPassword">
+                  <label for="confirmPassword">Confirm password</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="" ng-click="submitRegister()">Register</a>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="index.html" th:href="@{/login}">Login Page</a>
+          <a class="d-block small" href="forgot-password.html" th:href="@{/forgot-password}">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../static/vendor/jquery/jquery.js" th:src="@{/vendor/jquery/jquery.js}"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.js" th:src="@{/vendor/bootstrap/js/bootstrap.bundle.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../static/vendor/jquery-easing/jquery.easing.js" th:src="@{/vendor/jquery-easing/jquery.easing.js}"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="../static/vendor/chart.js/Chart.js" th:src="@{/vendor/chart.js/Chart.js}"></script>
+  <script src="../static/vendor/datatables/jquery.dataTables.js" th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+  <script src="../static/vendor/datatables/dataTables.bootstrap4.js" th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../static/js/all.js" th:src="@{/js/all.js}"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="../static/js/demo/datatables-demo.js" th:src="@{/js/demo/datatables-demo.js}"></script>
+  <script src="../static/js/demo/chart-area-demo.js" th:src="@{/js/demo/chart-area-demo.js}"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+  <script type="text/javascript" src="../static/js/registration.js" th:src="@{/js/registration.js}"></script>
+
+</body>
+
+</html>

@@ -5,6 +5,7 @@ import com.myBudget.entity.User;
 import com.myBudget.exception.BadRequestException;
 import com.myBudget.exception.InternalServerError;
 import com.myBudget.exception.NotFoundException;
+import com.myBudget.model.RegisterForm;
 import com.myBudget.service.UserService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(User user) throws InternalServerError, BadRequestException {
-//        validateUserMainData(user);
-        validateEmail(user.getEmail());
+    public User save(RegisterForm registerForm) throws InternalServerError, BadRequestException {
+        validateEmail(registerForm.getEmail());
+
+        User user = User.builder()
+            .firstName(registerForm.getFirstName())
+            .lastName(registerForm.getLastName())
+            .email(registerForm.getEmail())
+            .password(registerForm.getPassword())
+            .build();
 
         return userDAO.save(user);
     }

@@ -1,5 +1,6 @@
 package com.myBudget.entity;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 @Getter
 @Setter
+@Builder
 @EqualsAndHashCode(callSuper = true)
 public class User extends AbstractEntity{
 

@@ -1,5 +1,6 @@
 package com.myBudget.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

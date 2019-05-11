@@ -20,13 +20,14 @@ app.controller("CategoryTypeController", function($scope, $http) {
         var method = "";
         var url = "";
 
-        if ($scope.categoryTypeForm.id === -1) {
+        if ($scope.categoryTypeForm.id === "") {
             method = "POST";
             url = '/category-type';
         } else {
             method = "PUT";
             url = '/category-type';
         }
+
 
         $http({
             method: method,
