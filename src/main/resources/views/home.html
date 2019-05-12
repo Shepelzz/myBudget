@@ -77,9 +77,92 @@
 
 
         <!-- Page Content -->
-        <h1>Blank Page</h1>
+        <h1>Test</h1>
         <hr>
-        <p>This is a great starting point for new custom pages.</p>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Май - 2019</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th style="background-color: rgba(103,226,231,0.12)">Прогноз</th>
+                  <th style="background-color: rgba(231,120,97,0.12)">Факт</th>
+                  <th></th>
+                  <th colspan="2"></th>
+                </tr>
+                <tr>
+                  <th style="background-color: rgba(57,231,98,0.12)">Категория Дохода</th>
+                  <td width="15%">Сумма (UAH)</td>
+                  <td width="15%">Сумма (UAH)</td>
+                  <th width="15%">Разница</th>
+                  <th width="80px"></th>
+                  <th width="80px"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="categoryType in categoryTypes">
+                  <td>{{category.name}}</td>
+                  <td contenteditable="true">{{plSum}}</td>
+                  <td contenteditable="true">{{fcSum}}</td>
+                  <td >{{diffSum}}</td>
+                  <td>
+                    <a ng-click="editCategoryType(categoryType)" class="edit-button">Edit</a>
+                  </td>
+                  <td>
+                    <a ng-click="deleteCategoryType(categoryType)" class="delete-button">Delete</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                  <th></th>
+                  <th style="background-color: rgba(103,226,231,0.12)">Прогноз</th>
+                  <th style="background-color: rgba(231,120,97,0.12)">Факт</th>
+                  <th></th>
+                  <th colspan="2"></th>
+                </tr>
+                <tr>
+                  <th style="background-color: rgba(231,56,88,0.12)">Категория Расхода</th>
+                  <td width="15%">Сумма (UAH)</td>
+                  <td width="15%">Сумма (UAH)</td>
+                  <th width="15%">Разница</th>
+                  <th width="80px"></th>
+                  <th width="80px"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="categoryType in categoryTypes">
+                  <td>{{category.name}}</td>
+                  <td contenteditable="true">{{plSum}}</td>
+                  <td contenteditable="true">{{fcSum}}</td>
+                  <td >{{diffSum}}</td>
+                  <td>
+                    <a ng-click="editCategoryType(categoryType)" class="edit-button">Edit</a>
+                  </td>
+                  <td>
+                    <a ng-click="deleteCategoryType(categoryType)" class="delete-button">Delete</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Last update by Admin 21.01.2019 at 21:32</div>
+        </div>
+
+
 
       </div>
       <!-- /.container-fluid -->
