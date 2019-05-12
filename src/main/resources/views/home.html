@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html ng-app="myBudget" ng-controller="homeController" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -17,6 +17,8 @@
   <link href="../static/vendor/datatables/dataTables.bootstrap4.css" th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="../static/css/all.css" th:href="@{/css/all.css}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+  <script type="text/javascript" src="../static/js/home.js" th:src="@{/js/home.js}"></script>
 
 </head>
 
@@ -93,29 +95,33 @@
                   <th></th>
                   <th style="background-color: rgba(103,226,231,0.12)">Прогноз</th>
                   <th style="background-color: rgba(231,120,97,0.12)">Факт</th>
-                  <th></th>
-                  <th colspan="2"></th>
                 </tr>
                 <tr>
-                  <th style="background-color: rgba(57,231,98,0.12)">Категория Дохода</th>
+                  <th style="background-color: rgba(57,231,98,0.12)">Категория Дохода
+                    <span class="table-add float-right mr-2">
+                      <a href="#!" class="text-muted"><i class="fas fa-plus fa-1x" aria-hidden="true"></i></a>
+                    </span>
+                  </th>
                   <td width="15%">Сумма (UAH)</td>
                   <td width="15%">Сумма (UAH)</td>
                   <th width="15%">Разница</th>
-                  <th width="80px"></th>
-                  <th width="80px"> </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="categoryType in categoryTypes">
-                  <td>{{category.name}}</td>
-                  <td contenteditable="true">{{plSum}}</td>
-                  <td contenteditable="true">{{fcSum}}</td>
-                  <td >{{diffSum}}</td>
-                  <td>
-                    <a ng-click="editCategoryType(categoryType)" class="edit-button">Edit</a>
+                <tr ng-repeat="incomingItem in incomingItems">
+                  <td>{{incomingItem.category.name}}</td>
+                  <td contenteditable="true">{{incomingItem.plSum}}</td>
+                  <td contenteditable="true">{{incomingItem.fcSum}}</td>
+                  <td >{{incomingItem.diff}}</td>
+                  <td width="40px">
+                    <span class="table-add float-right mr-2">
+                      <a href="" ng-click="editCategoryType(categoryType)" class="text-muted"><i class="fas fa-edit fa-1x" aria-hidden="true"></i></a>
+                    </span>
                   </td>
-                  <td>
-                    <a ng-click="deleteCategoryType(categoryType)" class="delete-button">Delete</a>
+                  <td width="40px">
+                    <span class="table-add float-right mr-2">
+                      <a href="" ng-click="deleteCategoryType(categoryType)" class="text-muted"><i class="fas fa-trash fa-1x" aria-hidden="true"></i></a>
+                    </span>
                   </td>
                 </tr>
                 </tbody>
@@ -130,34 +136,39 @@
                   <th></th>
                   <th style="background-color: rgba(103,226,231,0.12)">Прогноз</th>
                   <th style="background-color: rgba(231,120,97,0.12)">Факт</th>
-                  <th></th>
-                  <th colspan="2"></th>
                 </tr>
                 <tr>
-                  <th style="background-color: rgba(231,56,88,0.12)">Категория Расхода</th>
+                  <th style="background-color: rgba(231,56,88,0.12)">Категория Дохода
+                    <span class="table-add float-right mr-2">
+                      <a href="#!" class="text-muted"><i class="fas fa-plus fa-1x" aria-hidden="true"></i></a>
+                    </span>
+                  </th>
                   <td width="15%">Сумма (UAH)</td>
                   <td width="15%">Сумма (UAH)</td>
                   <th width="15%">Разница</th>
-                  <th width="80px"></th>
-                  <th width="80px"> </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="categoryType in categoryTypes">
-                  <td>{{category.name}}</td>
-                  <td contenteditable="true">{{plSum}}</td>
-                  <td contenteditable="true">{{fcSum}}</td>
-                  <td >{{diffSum}}</td>
-                  <td>
-                    <a ng-click="editCategoryType(categoryType)" class="edit-button">Edit</a>
+                <tr ng-repeat="outgoingItem in outgoingItems">
+                  <td>{{outgoingItem.category.name}}</td>
+                  <td contenteditable="true">{{outgoingItem.plSum}}</td>
+                  <td contenteditable="true">{{outgoingItem.fcSum}}</td>
+                  <td >{{outgoingItem.diff}}</td>
+                  <td width="40px">
+                    <span class="table-add float-right mr-2">
+                      <a href="" ng-click="editCategoryType(categoryType)" class="text-muted"><i class="fas fa-edit fa-1x" aria-hidden="true"></i></a>
+                    </span>
                   </td>
-                  <td>
-                    <a ng-click="deleteCategoryType(categoryType)" class="delete-button">Delete</a>
+                  <td width="40px">
+                    <span class="table-add float-right mr-2">
+                      <a href="" ng-click="deleteCategoryType(categoryType)" class="text-muted"><i class="fas fa-trash fa-1x" aria-hidden="true"></i></a>
+                    </span>
                   </td>
                 </tr>
                 </tbody>
               </table>
             </div>
+
           </div>
           <div class="card-footer small text-muted">Last update by Admin 21.01.2019 at 21:32</div>
         </div>
